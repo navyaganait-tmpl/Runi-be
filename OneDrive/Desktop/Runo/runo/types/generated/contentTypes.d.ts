@@ -768,6 +768,206 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiAuthorAuthor extends Schema.CollectionType {
+  collectionName: 'authors';
+  info: {
+    singularName: 'author';
+    pluralName: 'authors';
+    displayName: 'Author';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    author_name: Attribute.String & Attribute.Required;
+    author_image: Attribute.Media;
+    author_socialmedia: Attribute.Component<
+      'social-media.author-socialmedia',
+      true
+    >;
+    author_categories: Attribute.Relation<
+      'api::author.author',
+      'manyToMany',
+      'api::author-category.author-category'
+    >;
+    topics: Attribute.Relation<
+      'api::author.author',
+      'oneToMany',
+      'api::topic.topic'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::author.author',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::author.author',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiAuthorCategoryAuthorCategory extends Schema.CollectionType {
+  collectionName: 'author_categories';
+  info: {
+    singularName: 'author-category';
+    pluralName: 'author-categories';
+    displayName: 'Author_category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    author_category: Attribute.String;
+    authors: Attribute.Relation<
+      'api::author-category.author-category',
+      'manyToMany',
+      'api::author.author'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::author-category.author-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::author-category.author-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCategoryCategory extends Schema.CollectionType {
+  collectionName: 'categories';
+  info: {
+    singularName: 'category';
+    pluralName: 'categories';
+    displayName: 'Category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category_topic: Attribute.String;
+    topics: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::topic.topic'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFooterFooter extends Schema.SingleType {
+  collectionName: 'footers';
+  info: {
+    singularName: 'footer';
+    pluralName: 'footers';
+    displayName: 'Footer';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    ShortHeading1: Attribute.Component<'footer.row1'>;
+    ShortHeading2: Attribute.Component<'footer.row2'>;
+    ShortHeading3: Attribute.Component<'footer.row3'>;
+    ShortHeading4: Attribute.Component<'footer.row4', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTopicTopic extends Schema.CollectionType {
+  collectionName: 'topics';
+  info: {
+    singularName: 'topic';
+    pluralName: 'topics';
+    displayName: 'Topic';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    categories: Attribute.Relation<
+      'api::topic.topic',
+      'manyToMany',
+      'api::category.category'
+    >;
+    Topic_image: Attribute.Media & Attribute.Required;
+    Topic_longdesc: Attribute.Text;
+    Topic_date: Attribute.Date;
+    author: Attribute.Relation<
+      'api::topic.topic',
+      'manyToOne',
+      'api::author.author'
+    >;
+    topic_readtime: Attribute.Time;
+    topic_shortDesc: Attribute.RichText;
+    topic_rating: Attribute.Integer &
+      Attribute.SetMinMax<{
+        min: 1;
+        max: 5;
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::topic.topic',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::topic.topic',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -786,6 +986,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::author.author': ApiAuthorAuthor;
+      'api::author-category.author-category': ApiAuthorCategoryAuthorCategory;
+      'api::category.category': ApiCategoryCategory;
+      'api::footer.footer': ApiFooterFooter;
+      'api::topic.topic': ApiTopicTopic;
     }
   }
 }

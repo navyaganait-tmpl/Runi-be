@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_social_media_author_socialmedias",
+  "info": {
+    "displayName": "author_socialmedia"
+  },
+  "options": {},
+  "attributes": {
+    "socialmedia_image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "socailmedia_url": {
+      "type": "string"
+    }
+  }
+}

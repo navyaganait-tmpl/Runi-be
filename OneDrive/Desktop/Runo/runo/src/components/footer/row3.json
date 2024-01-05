@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_footer_row3s",
+  "info": {
+    "displayName": "Row3"
+  },
+  "options": {},
+  "attributes": {
+    "Column1": {
+      "type": "string"
+    }
+  }
+}

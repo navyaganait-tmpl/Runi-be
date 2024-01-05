@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_footer_row1s",
+  "info": {
+    "displayName": "Row1",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Column1": {
+      "type": "email"
+    },
+    "column2": {
+      "type": "biginteger"
+    }
+  }
+}

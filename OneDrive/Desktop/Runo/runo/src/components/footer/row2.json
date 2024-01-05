@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_footer_row2s",
+  "info": {
+    "displayName": "Row2",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Column1": {
+      "type": "string"
+    },
+    "Column2": {
+      "type": "string"
+    },
+    "Column3": {
+      "type": "string"
+    },
+    "Column4": {
+      "type": "string"
+    },
+    "Column5": {
+      "type": "string"
+    }
+  }
+}
