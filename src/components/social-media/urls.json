@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_social_media_urls",
+  "info": {
+    "displayName": "urls"
+  },
+  "options": {},
+  "attributes": {
+    "urls": {
+      "type": "string"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

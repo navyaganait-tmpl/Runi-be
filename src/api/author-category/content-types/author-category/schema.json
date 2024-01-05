@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "author_categories",
+  "info": {
+    "singularName": "author-category",
+    "pluralName": "author-categories",
+    "displayName": "Author_category"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "author_category": {
+      "type": "string"
+    },
+    "authors": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::author.author",
+      "mappedBy": "author_categories"
+    }
+  }
+}

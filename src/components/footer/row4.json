@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_footer_row4s",
+  "info": {
+    "displayName": "Row4",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

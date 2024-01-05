@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "topics",
+  "info": {
+    "singularName": "topic",
+    "pluralName": "topics",
+    "displayName": "Topic",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "topics"
+    },
+    "Topic_image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Topic_longdesc": {
+      "type": "text"
+    },
+    "Topic_date": {
+      "type": "date"
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::author.author",
+      "inversedBy": "topics"
+    },
+    "topic_readtime": {
+      "type": "time"
+    },
+    "topic_shortDesc": {
+      "type": "richtext"
+    },
+    "topic_rating": {
+      "type": "integer",
+      "max": 5,
+      "min": 1
+    }
+  }
+}
