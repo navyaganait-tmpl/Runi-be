@@ -1,2 +1,3 @@
-.envgit push -u origin maingit
+.env
 node_modules
+public
